@@ -1,0 +1,10 @@
+FROM ollama/ollama
+
+# Install the model during image build
+RUN ollama serve & \
+    sleep 5 && \
+    ollama pull all-minilm && \
+    pkill ollama
+
+# Default command
+CMD ["serve"]
